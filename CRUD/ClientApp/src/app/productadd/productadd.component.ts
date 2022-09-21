@@ -43,6 +43,7 @@ import { environment } from 'src/environments/environment';
  let headers = new HttpHeaders();
  headers.append('Content-Type', 'application/json; charset=utf-8');
  if (this.title == "Create") {
+  this.modelData.createdOn = new Date();
  this.http.post(environment.baseUrl + "Products", this.modelData, { headers: headers })
  .subscribe((res: any) => {
  self._router.navigate(['/product-list']);
