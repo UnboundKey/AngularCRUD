@@ -26,9 +26,10 @@ import { productAddComponent } from './productadd/productadd.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      {path: 'product-add', component:productAddComponent},
+      { path: 'product-list', component: FetchDataComponent },
+      { path: 'product-add', component: productAddComponent },
+      { path: 'product-edit/:id', component: productAddComponent },
+      { path: '**', redirectTo: 'home' } 
     ])
   ],
   providers: [],
