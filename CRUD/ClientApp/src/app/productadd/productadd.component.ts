@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
  
  @Component({
  selector: 'product-add',
@@ -29,7 +30,7 @@ import { Router, ActivatedRoute } from '@angular/router';
  let self = this;
  let headers = new HttpHeaders();
  headers.append('Content-Type', 'application/json; charset=utf-8');
- this.http.get(this.myAppUrl + "api/Products/" + this.id, { headers: headers })
+ this.http.get(environment.baseUrl + "Products/" + this.id, /*{ headers: headers }*/)
  .subscribe((res: any) => {
  self.modelData = JSON.parse(res._body);
  });
@@ -42,13 +43,13 @@ import { Router, ActivatedRoute } from '@angular/router';
  let headers = new HttpHeaders();
  headers.append('Content-Type', 'application/json; charset=utf-8');
  if (this.title == "Create") {
- this.http.post(this.myAppUrl + "api/Products", this.modelData, { headers: headers })
+ this.http.post(environment.baseUrl + "Products", this.modelData, { headers: headers })
  .subscribe((res: any) => {
  self._router.navigate(['/product-list']);
  });
  }
  if (this.title == "Edit") {
- this.http.put(this.myAppUrl + "api/Products/" + this.id, this.modelData, { headers: headers })
+ this.http.put(environment.baseUrl + "Products/" + this.id, this.modelData, { headers: headers })
  .subscribe((res: any) => {
  self._router.navigate(['/product-list']);
  });

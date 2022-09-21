@@ -18,6 +18,8 @@ builder.Services.AddCors(options =>
                           policy.WithOrigins("https://localhost:44466",
                               "https://localhost:7200",
                               "https://localhost:5200");
+                          policy.WithMethods("POST", "GET");
+                          policy.WithHeaders("Content-Type");
                       });
 });
 
@@ -38,7 +40,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseCors("AllowOrigin");
+app.UseCors("AllowEverything");
 app.MapControllerRoute(name: "Api", pattern: "api/{controller}");
 
 app.MapControllerRoute(
