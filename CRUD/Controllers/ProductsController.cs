@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CRUD.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace CRUD.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowEverything")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
